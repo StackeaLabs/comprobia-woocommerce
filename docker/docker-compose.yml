@@ -1,0 +1,63 @@
+# Un WordPress con WooCommerce para probar el plugin a mano y de punta a punta.
+#
+#   docker compose -f docker/docker-compose.yml up -d --build
+#   docker compose -f docker/docker-compose.yml run --rm -T cli sh -s < docker/preparar.sh
+#   → http://localhost:8092/wp-admin  (admin / nexocpe-pruebas: sólo para este WordPress local)
+#
+# ⚠️ Sin bind mounts de la carpeta del proyecto (tampoco `configs` con `file:`,
+# que también lo son), a propósito: en Windows, montar
+# la unidad en otro contenedor rompió una vez el montaje de Docker Desktop. El
+# plugin entra en la imagen con COPY y, para probar un cambio sin reconstruir:
+#   docker compose -f docker/docker-compose.yml cp . wp:/var/www/html/wp-content/plugins/nexocpe-woocommerce
+#
+# NexoCPE de desarrollo se alcanza en http://host.docker.internal:8091.
+name: nexocpe-woo
+
+services:
+  db:
+    image: mariadb:11
+    environment:
+      MARIADB_DATABASE: wordpress
+      MARIADB_USER: wordpress
+      MARIADB_PASSWORD: wordpress
+      MARIADB_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - db:/var/lib/mysql
+
+  wp:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    depends_on: [db]
+    ports:
+      - '8092:80'
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    volumes:
+      - wp:/var/www/html
+
+  cli:
+    image: wordpress:cli-php8.3
+    profiles: [cli]
+    # El usuario de la imagen de Apache (www-data = 33), no el de Alpine (82).
+    user: '33:33'
+    depends_on: [db, wp]
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+      HOME: /tmp
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    volumes:
+      - wp:/var/www/html
+
+volumes:
+  db:
+  wp:
