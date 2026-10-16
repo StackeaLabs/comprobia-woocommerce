@@ -1,8 +1,8 @@
-# NexoCPE para WooCommerce
+# Comprobia para WooCommerce
 
 Plugin de WordPress que emite la boleta o la factura electrónica de cada pedido
-de WooCommerce con la API v1 de [NexoCPE](https://nexocpe.victorllerena.com).
-Bloque C5c del backlog de NexoCPE.
+de WooCommerce con la API v1 de [Comprobia](https://comprobia.stackealabs.com).
+Bloque C5c del backlog de Comprobia.
 
 ## Cómo funciona
 
@@ -25,7 +25,7 @@ pedido → Completado ─(prioridad 5, antes del correo)─→ NexoCPE_Mapeador 
 Decisiones que no se cambian a la ligera:
 
 - **La fecha de emisión es la de hoy en Lima**, nunca la UTC del servidor: desde
-  las 19:00 de Lima la UTC ya es mañana y NexoCPE la rechaza (RN-G4).
+  las 19:00 de Lima la UTC ya es mañana y Comprobia la rechaza (RN-G4).
 - **Lo que no sabe emitir bien no lo adivina** (líneas gratis, cargos negativos,
   más de 3 decimales en la cantidad, boleta > S/ 700 sin DNI): se detiene con un
   mensaje. Un comprobante distinto de lo cobrado es peor que ninguno.

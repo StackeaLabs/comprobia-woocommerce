@@ -15,8 +15,8 @@ final class NexoCPE_Integracion extends WC_Integration {
 
 	public function __construct() {
 		$this->id                 = 'nexocpe';
-		$this->method_title       = 'NexoCPE';
-		$this->method_description = 'Emite la boleta o la factura electrónica de cada pedido con NexoCPE. '
+		$this->method_title       = 'Comprobia';
+		$this->method_description = 'Emite la boleta o la factura electrónica de cada pedido con Comprobia. '
 			. 'Prueba primero con un sandbox (gratis, no llega a SUNAT): crea uno en /desarrolladores/sandbox.';
 
 		$this->init_form_fields();
@@ -29,9 +29,9 @@ final class NexoCPE_Integracion extends WC_Integration {
 	public function init_form_fields() {
 		$this->form_fields = array(
 			'url'           => array(
-				'title'       => 'URL de NexoCPE',
+				'title'       => 'URL de Comprobia',
 				'type'        => 'text',
-				'default'     => 'https://nexocpe.victorllerena.com',
+				'default'     => 'https://comprobia.stackealabs.com',
 				'description' => 'Sin barra al final.',
 			),
 			'ruc'           => array(
@@ -120,7 +120,7 @@ final class NexoCPE_Integracion extends WC_Integration {
 		$cliente = NexoCPE_Plugin::cliente();
 
 		if ( ! $cliente->configurado() ) {
-			WC_Admin_Settings::add_error( 'NexoCPE: falta la URL, el RUC o la clave de API.' );
+			WC_Admin_Settings::add_error( 'Comprobia: falta la URL, el RUC o la clave de API.' );
 
 			return;
 		}
@@ -135,11 +135,11 @@ final class NexoCPE_Integracion extends WC_Integration {
 				isset( $r['cuerpo']['data'] ) && is_array( $r['cuerpo']['data'] ) ? $r['cuerpo']['data'] : array()
 			);
 
-			WC_Admin_Settings::add_message( 'NexoCPE: conexión correcta. Series del emisor: ' . implode( ', ', array_unique( array_filter( $series ) ) ) . '.' );
+			WC_Admin_Settings::add_message( 'Comprobia: conexión correcta. Series del emisor: ' . implode( ', ', array_unique( array_filter( $series ) ) ) . '.' );
 
 			return;
 		}
 
-		WC_Admin_Settings::add_error( 'NexoCPE: ' . $r['error'] );
+		WC_Admin_Settings::add_error( 'Comprobia: ' . $r['error'] );
 	}
 }

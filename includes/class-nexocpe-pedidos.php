@@ -61,7 +61,7 @@ final class NexoCPE_Pedidos {
 		$cliente = NexoCPE_Plugin::cliente();
 
 		if ( ! $cliente->configurado() ) {
-			self::fallo( $order, 'Falta configurar NexoCPE (WooCommerce → Ajustes → Integración).' );
+			self::fallo( $order, 'Falta configurar Comprobia (WooCommerce → Ajustes → Integración).' );
 
 			return;
 		}
@@ -205,7 +205,7 @@ final class NexoCPE_Pedidos {
 		$order->delete_meta_data( '_nexocpe_error' );
 		$order->save();
 
-		$order->add_order_note( sprintf( '%s %s emitida en NexoCPE.', '01' === $c['tipo_documento'] ? 'Factura' : 'Boleta', $c['numero_completo'] ) );
+		$order->add_order_note( sprintf( '%s %s emitida en Comprobia.', '01' === $c['tipo_documento'] ? 'Factura' : 'Boleta', $c['numero_completo'] ) );
 
 		if ( function_exists( 'as_schedule_single_action' ) ) {
 			as_schedule_single_action( time() + 15 * MINUTE_IN_SECONDS, self::ACCION_ESTADO, array( $order->get_id(), 1 ), self::GRUPO );
@@ -217,7 +217,7 @@ final class NexoCPE_Pedidos {
 		$order->save();
 
 		if ( $nota ) {
-			$order->add_order_note( 'NexoCPE: no se emitió el comprobante. ' . $mensaje );
+			$order->add_order_note( 'Comprobia: no se emitió el comprobante. ' . $mensaje );
 		}
 	}
 

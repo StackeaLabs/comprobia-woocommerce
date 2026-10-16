@@ -71,7 +71,7 @@ final class NexoCPE_Cliente {
 						'Authorization' => 'Bearer ' . $this->clave,
 						'Accept'        => 'application/json',
 						'Content-Type'  => 'application/json',
-						'User-Agent'    => 'NexoCPE-WooCommerce/' . NEXOCPE_WC_VERSION,
+						'User-Agent'    => 'Comprobia-WooCommerce/' . NEXOCPE_WC_VERSION,
 					),
 				),
 				$opciones
@@ -80,7 +80,7 @@ final class NexoCPE_Cliente {
 
 		if ( is_wp_error( $respuesta ) ) {
 			// El mensaje de WP_Error es de la red (cURL), no lleva la clave: va en la cabecera.
-			return array( 'estado' => 0, 'cuerpo' => array(), 'error' => 'No se pudo conectar con NexoCPE: ' . $respuesta->get_error_message() );
+			return array( 'estado' => 0, 'cuerpo' => array(), 'error' => 'No se pudo conectar con Comprobia: ' . $respuesta->get_error_message() );
 		}
 
 		$estado = (int) wp_remote_retrieve_response_code( $respuesta );
@@ -96,7 +96,7 @@ final class NexoCPE_Cliente {
 
 	/** El mensaje de NexoCPE con sus errores por campo, legible para quien atiende la tienda. */
 	private static function mensaje( $estado, array $cuerpo ) {
-		$mensaje = isset( $cuerpo['message'] ) ? (string) $cuerpo['message'] : "NexoCPE respondió {$estado}.";
+		$mensaje = isset( $cuerpo['message'] ) ? (string) $cuerpo['message'] : "Comprobia respondió {$estado}.";
 		$detalle = array();
 
 		foreach ( isset( $cuerpo['errors'] ) && is_array( $cuerpo['errors'] ) ? $cuerpo['errors'] : array() as $error ) {

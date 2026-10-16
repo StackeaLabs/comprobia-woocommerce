@@ -186,7 +186,7 @@ final class NexoCPE_Mapeador {
 		if ( $centimos <= 0 ) {
 			throw new NexoCPE_Pedido_No_Emitible(
 				is_int( $que )
-					? "La línea {$que} («{$nombre}») no tiene precio. Los regalos y bonificaciones se emiten desde el panel de NexoCPE."
+					? "La línea {$que} («{$nombre}») no tiene precio. Los regalos y bonificaciones se emiten desde el panel de Comprobia."
 					: "El {$que} es negativo o cero: los descuentos van en el precio de cada producto (un cupón)."
 			);
 		}

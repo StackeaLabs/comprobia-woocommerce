@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name:       NexoCPE para WooCommerce
- * Plugin URI:        https://nexocpe.victorllerena.com/desarrolladores
- * Description:       Emite la boleta o la factura electrónica de cada pedido ante SUNAT con NexoCPE.
- * Version:           0.1.0
+ * Plugin Name:       Comprobia para WooCommerce
+ * Plugin URI:        https://comprobia.stackealabs.com/desarrolladores
+ * Description:       Emite la boleta o la factura electrónica de cada pedido ante SUNAT con Comprobia.
+ * Version:           0.1.1
  * Requires at least: 6.4
  * Requires PHP:      8.0
  * Requires Plugins:  woocommerce
@@ -20,7 +20,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'NEXOCPE_WC_VERSION', '0.1.0' );
+define( 'NEXOCPE_WC_VERSION', '0.1.1' );
 define( 'NEXOCPE_WC_ARCHIVO', __FILE__ );
 
 require_once __DIR__ . '/includes/class-nexocpe-mapeador.php';
@@ -51,7 +51,7 @@ final class NexoCPE_Plugin {
 			add_action(
 				'admin_notices',
 				static function () {
-					echo '<div class="notice notice-error"><p>NexoCPE para WooCommerce necesita WooCommerce activo.</p></div>';
+					echo '<div class="notice notice-error"><p>Comprobia para WooCommerce necesita WooCommerce activo.</p></div>';
 				}
 			);
 
@@ -80,7 +80,7 @@ final class NexoCPE_Plugin {
 
 		return array_merge(
 			array(
-				'url'           => 'https://nexocpe.victorllerena.com',
+				'url'           => 'https://comprobia.stackealabs.com',
 				'ruc'           => '',
 				'clave'         => '',
 				'serie_factura' => 'F001',
