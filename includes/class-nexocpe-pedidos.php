@@ -350,7 +350,9 @@ final class NexoCPE_Pedidos {
 		}
 
 		if ( $texto_plano ) {
-			echo "\nComprobante electrónico: " . esc_html( $numero ) . "\n" . esc_url_raw( $consulta ) . "\n";
+			// Texto plano: sin esc_html(), que dejaría entidades (&amp;) en un
+			// correo que no es HTML. sanitize_text_field() quita etiquetas y saltos.
+			echo "\nComprobante electrónico: " . sanitize_text_field( $numero ) . "\n" . esc_url_raw( $consulta ) . "\n";
 
 			return;
 		}

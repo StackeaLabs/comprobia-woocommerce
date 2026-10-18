@@ -3,7 +3,7 @@
  * Plugin Name:       Comprobia para WooCommerce
  * Plugin URI:        https://comprobia.stackealabs.com/desarrolladores
  * Description:       Emite la boleta o la factura electrónica de cada pedido ante SUNAT con Comprobia.
- * Version:           0.1.1
+ * Version:           0.1.2
  * Requires at least: 6.4
  * Requires PHP:      8.0
  * Requires Plugins:  woocommerce
@@ -20,7 +20,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'NEXOCPE_WC_VERSION', '0.1.1' );
+define( 'NEXOCPE_WC_VERSION', '0.1.2' );
 define( 'NEXOCPE_WC_ARCHIVO', __FILE__ );
 
 require_once __DIR__ . '/includes/class-nexocpe-mapeador.php';

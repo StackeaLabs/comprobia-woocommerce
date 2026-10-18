@@ -4,7 +4,7 @@ Tags: facturacion electronica, sunat, peru, boleta, factura
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 0.1.1
+Stable tag: 0.1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,13 @@ SUNAT: https://comprobia.stackealabs.com/desarrolladores/sandbox
    sólo a mano.
 
 == Changelog ==
+
+= 0.1.2 =
+* El correo en texto plano ya no lleva entidades HTML (&amp;) en el número del
+  comprobante.
+
+= 0.1.1 =
+* La marca Comprobia y su dominio, comprobia.stackealabs.com.
 
 = 0.1.0 =
 * Primera versión: boleta y factura al contado, checkout clásico y de bloques,
