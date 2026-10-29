@@ -42,7 +42,7 @@ final class NexoCPE_Integracion extends WC_Integration {
 			'clave'         => array(
 				'title'       => 'Clave de API',
 				'type'        => 'clave',
-				'description' => 'nx_beta_… o nx_produccion_…, con permiso de emitir y consultar. Por seguridad no se vuelve a mostrar: déjalo vacío para conservar la guardada.',
+				'description' => 'cmp_beta_… o cmp_produccion_… (las nx_ de antes siguen valiendo), con permiso de emitir y consultar. Por seguridad no se vuelve a mostrar: déjalo vacío para conservar la guardada.',
 			),
 			'serie_factura' => array(
 				'title'   => 'Serie de factura',

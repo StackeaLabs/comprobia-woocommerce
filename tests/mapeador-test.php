@@ -137,6 +137,18 @@ prueba(
 );
 
 prueba(
+	'boleta en dólares sin DNI se detiene, aunque sea pequeña; con DNI sale',
+	function () use ( $ajustes ) {
+		$dolares = pedido( array( 'moneda' => 'USD' ) );
+
+		lanza( fn () => NexoCPE_Mapeador::cuerpo( $dolares, $ajustes ), 'tipo de cambio' );
+
+		$dolares['cliente']['dni'] = '12345678';
+		igual( 'USD', NexoCPE_Mapeador::cuerpo( $dolares, $ajustes )['moneda'], 'moneda' );
+	}
+);
+
+prueba(
 	'con los impuestos de WooCommerce: precio = total + impuesto, siempre gravado',
 	function () {
 		$c = NexoCPE_Mapeador::cuerpo(

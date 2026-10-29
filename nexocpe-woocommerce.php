@@ -3,7 +3,7 @@
  * Plugin Name:       Comprobia para WooCommerce
  * Plugin URI:        https://comprobia.stackealabs.com/desarrolladores
  * Description:       Emite la boleta o la factura electrónica de cada pedido ante SUNAT con Comprobia.
- * Version:           0.1.2
+ * Version:           0.1.3
  * Requires at least: 6.4
  * Requires PHP:      8.0
  * Requires Plugins:  woocommerce

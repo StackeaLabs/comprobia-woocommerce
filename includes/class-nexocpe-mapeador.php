@@ -136,6 +136,12 @@ final class NexoCPE_Mapeador {
 				throw new NexoCPE_Pedido_No_Emitible( 'Una boleta de más de S/ 700 necesita el DNI del cliente: agrégalo al pedido y vuelve a emitir.' );
 			}
 
+			// En dólares el tope de S/ 700 se mide también convertido, con el tipo
+			// de cambio del día, que aquí no se conoce: sin DNI no se adivina.
+			if ( '' === $dni && 'USD' === $moneda ) {
+				throw new NexoCPE_Pedido_No_Emitible( 'Una boleta en dólares necesita el DNI del cliente: el tope de S/ 700 depende del tipo de cambio del día. Agrégalo al pedido y vuelve a emitir.' );
+			}
+
 			$adquirente = '' === $dni
 				? array(
 					'tipo_documento'   => '0',
