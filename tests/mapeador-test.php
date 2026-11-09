@@ -202,5 +202,23 @@ prueba(
 	}
 );
 
+prueba(
+	'la versión es la misma en la cabecera, la constante y el readme',
+	function () {
+		$plugin = file_get_contents( __DIR__ . '/../nexocpe-woocommerce.php' );
+		$readme = file_get_contents( __DIR__ . '/../readme.txt' );
+
+		preg_match( '/^ \* Version:\s+(\S+)/m', $plugin, $cabecera );
+		preg_match( "/define\( 'NEXOCPE_WC_VERSION', '([^']+)' \);/", $plugin, $constante );
+		preg_match( '/^Stable tag:\s+(\S+)/m', $readme, $estable );
+		preg_match( '/^= (\S+) =$/m', $readme, $ultimo_cambio );
+
+		$version = $cabecera[1] ?? 'sin cabecera';
+		igual( $version, $constante[1] ?? null, 'NEXOCPE_WC_VERSION' );
+		igual( $version, $estable[1] ?? null, 'Stable tag del readme' );
+		igual( $version, $ultimo_cambio[1] ?? null, 'primera entrada del changelog' );
+	}
+);
+
 echo "\n" . ( $total - $fallos ) . " de {$total} pasaron.\n";
 exit( $fallos > 0 ? 1 : 0 );

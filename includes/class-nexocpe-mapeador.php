@@ -44,7 +44,7 @@ final class NexoCPE_Mapeador {
 		$moneda  = strtoupper( (string) ( isset( $pedido['moneda'] ) ? $pedido['moneda'] : 'PEN' ) );
 
 		if ( ! in_array( $moneda, array( 'PEN', 'USD' ), true ) ) {
-			throw new NexoCPE_Pedido_No_Emitible( "La moneda del pedido es {$moneda}: NexoCPE emite en soles (PEN) o dólares (USD)." );
+			throw new NexoCPE_Pedido_No_Emitible( "La moneda del pedido es {$moneda}: Comprobia emite en soles (PEN) o dólares (USD)." );
 		}
 
 		$items = array();

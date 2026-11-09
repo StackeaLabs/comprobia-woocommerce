@@ -4,7 +4,7 @@ Tags: facturacion electronica, sunat, peru, boleta, factura
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 0.1.3
+Stable tag: 0.1.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,11 @@ SUNAT: https://comprobia.stackealabs.com/desarrolladores/sandbox
    sólo a mano.
 
 == Changelog ==
+
+= 0.1.4 =
+* La versión que el plugin manda en su User-Agent es la del plugin (decía
+  0.1.2).
+* El aviso de moneda no admitida dice Comprobia, no la marca anterior.
 
 = 0.1.3 =
 * Una boleta en dólares sin DNI se detiene antes de llamar a la API: el tope
