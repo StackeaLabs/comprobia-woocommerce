@@ -14,7 +14,7 @@ if ! wp core is-installed 2>/dev/null; then
 fi
 
 wp plugin is-installed woocommerce || wp plugin install woocommerce
-wp plugin activate woocommerce nexocpe-woocommerce
+wp plugin activate woocommerce comprobia-woocommerce
 
 wp option update woocommerce_currency PEN
 wp option update woocommerce_default_country PE:LIM

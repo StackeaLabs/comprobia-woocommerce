@@ -205,7 +205,7 @@ prueba(
 prueba(
 	'la versión es la misma en la cabecera, la constante y el readme',
 	function () {
-		$plugin = file_get_contents( __DIR__ . '/../nexocpe-woocommerce.php' );
+		$plugin = file_get_contents( __DIR__ . '/../comprobia-woocommerce.php' );
 		$readme = file_get_contents( __DIR__ . '/../readme.txt' );
 
 		preg_match( '/^ \* Version:\s+(\S+)/m', $plugin, $cabecera );

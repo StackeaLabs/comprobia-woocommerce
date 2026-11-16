@@ -49,9 +49,19 @@ docker compose -f docker/docker-compose.yml run --rm -T cli sh -s < docker/prepa
 ## Empaquetar
 
 ```bash
-git archive --format=zip --prefix=nexocpe-woocommerce/ -o nexocpe-woocommerce.zip HEAD
+git archive --format=zip --prefix=comprobia-woocommerce/ -o comprobia-woocommerce.zip HEAD
 ```
 
 `.gitattributes` deja fuera `tests/` y `docker/`.
+
+## Lo que lleva «nexocpe» y NO se renombra
+
+Desde la 0.1.5 el slug es `comprobia-woocommerce`, pero lo que ya está guardado
+en la base de una tienda conserva su nombre: los ajustes
+(`woocommerce_nexocpe_settings`, id de integración `nexocpe`), los meta de los
+pedidos (`_nexocpe_*`) y los campos del checkout (`billing_nexocpe_*`,
+`nexocpe/…`). Renombrarlos dejaría a una tienda sin su clave de API y sin el
+comprobante de los pedidos ya emitidos. Las clases `NexoCPE_*` son internas y
+tampoco se tocan.
 
 Licencia GPL-2.0-or-later, como WordPress.

@@ -4,7 +4,7 @@ Tags: facturacion electronica, sunat, peru, boleta, factura
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 0.1.4
+Stable tag: 0.1.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,13 @@ SUNAT: https://comprobia.stackealabs.com/desarrolladores/sandbox
    sólo a mano.
 
 == Changelog ==
+
+= 0.1.5 =
+* El plugin se llama ahora comprobia-woocommerce: carpeta, archivo principal y
+  text domain. Si tenías instalada la versión anterior (carpeta
+  nexocpe-woocommerce), desactívala y bórrala antes de subir ésta: los ajustes y
+  los comprobantes ya guardados en los pedidos se conservan, porque sus claves
+  no cambian.
 
 = 0.1.4 =
 * La versión que el plugin manda en su User-Agent es la del plugin (decía
